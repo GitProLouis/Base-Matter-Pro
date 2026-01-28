@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base Matter | Human Optimization</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand: #ccff00;
+            --bg: #050505;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: #fff;
+            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden;
+        }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Brand Utilities */
+        .text-brand { color: var(--brand); }
+        .bg-brand { background-color: var(--brand); }
+        .border-brand { border-color: var(--brand); }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .scan-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--brand), transparent);
+            box-shadow: 0 0 15px var(--brand);
+            position: absolute;
+            width: 100%;
+            z-index: 20;
+            animation: scan 3.5s ease-in-out infinite;
+        }
+        
+        @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            5% { opacity: 1; }
+            95% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        @keyframes wave {
+          0%, 100% { transform: scaleY(0.4); }
+          50% { transform: scaleY(1); }
+        }
+        .animate-wave {
+          animation: wave 1.2s ease-in-out infinite;
+          transform-origin: bottom;
+        }
+
+        .glow-brand {
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.15);
+        }
+
+        .text-tracking-tightest { letter-spacing: -0.05em; }
+        .text-tracking-widest-plus { letter-spacing: 0.3em; }
+
+        /* Print Logic for PDF Generation */
+        @media print {
+            body { 
+                background: white !important; 
+                color: black !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            #root > div > nav { display: none !important; } /* Hide BottomNav */
+            .print-hidden { display: none !important; }
+            .glass { 
+                background: transparent !important; 
+                border: 1px solid #e5e7eb !important; 
+                backdrop-filter: none !important;
+                box-shadow: none !important;
+            }
+            .text-brand { color: #88aa00 !important; } /* High contrast for print */
+            .bg-brand { background-color: #88aa00 !important; }
+            * { 
+                -webkit-print-color-adjust: exact !important; 
+                print-color-adjust: exact !important; 
+            }
+            .fixed { position: relative !important; }
+            .absolute { position: relative !important; }
+            .translate-y-0 { transform: none !important; }
+            .animate-in { animation: none !important; }
+            .h-screen { height: auto !important; }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+</head>
+<body class="bg-black text-white">
+    <div id="root"></div>
+</body>
+</html>

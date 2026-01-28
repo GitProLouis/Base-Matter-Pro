@@ -1,0 +1,8 @@
+{
+  "name": "Base Matter Pro",
+  "description": "An AI-powered fitness experience that uses computer vision to analyze your physique and generate ultra-personalized workout protocols.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
